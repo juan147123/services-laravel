@@ -1,6 +1,6 @@
 ## prueba apis laravel
 
-##Instalar paquetes[generar carpeta vendor]
+## Instalar paquetes[generar carpeta vendor]
 - composer install
 
 ## Correr el proyecto
