@@ -40,6 +40,7 @@ class ProductController extends Controller
     {
         try {
             if ($this->repository->update($id, $request->all())) {
+                $this->repository->updateSupplierProduct($request->idproductsuplier,$request->idsupplier,$id);
                 $data = array("idproduct" => $id, "msg" => "Actualizado con exito");
             }
         } catch (\Throwable $th) {
