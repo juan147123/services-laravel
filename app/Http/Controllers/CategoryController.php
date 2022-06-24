@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Producto;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Http\Interfaces\ControllerInterface;
-use App\Interfaces\ProductoRepositoryInterface;
-use App\Http\Resources\{ProductoResource,ProductoCollection};
+use App\Interfaces\CategoryRepositoryInterface;
+use App\Http\Resources\{CategoryResource,CategoryCollection};
 
-class ProductoController extends Controller implements ControllerInterface
+class CategoryController extends Controller
 {
     private $repository;
 
     public function __construct(
-        ProductoRepositoryInterface $repository
+        CategoryRepositoryInterface $repository
         ){
         $this->repository = $repository;
     }
 
     public function create(Request $request){
-        return new  ProductoResource(
+        return new  CategoryResource(
             $this->repository->create($request->all())
         );
     }
@@ -28,21 +28,21 @@ class ProductoController extends Controller implements ControllerInterface
     public function update($id,Request $request){
         try {
             if($this->repository->update($id,$request->all())){
-                $data = array("id_producto" => $id,"msg" => "Actualizado con exito");
+                $data = array("idcategory" => $id,"msg" => "Actualizado con exito");
             }
         } catch (\Throwable $th) {
-                return new  ProductoResource(
-                    array("id_producto" => -1,"msg" => "Error al actualizar registro")
+                return new  CategoryResource(
+                    array("idcategory" => -1,"msg" => "Error al actualizar registro")
                 );
         }
-        return new ProductoResource(
+        return new CategoryResource(
             $data
         );
     }
 
     public function listAll(){
 
-        return new  ProductoCollection(
+        return new  CategoryCollection(
             $this->repository->all(
                 array('*')
             )
@@ -54,14 +54,14 @@ class ProductoController extends Controller implements ControllerInterface
     {
          try {
             if($this->repository->update($id,$request->all())){
-                $data = array("id_producto" => $id,"msg" => "Actualizado con exito");
+                $data = array("idcategory" => $id,"msg" => "Actualizado con exito");
             }
         } catch (\Throwable $th) {
-                return new  ProductoResource(
-                    array("id_producto" => -1,"msg" => "Error al actualizar registro")
+                return new  CategoryResource(
+                    array("idcategory" => -1,"msg" => "Error al actualizar registro")
                 );
         }
-        return new ProductoResource(
+        return new CategoryResource(
             $data
         );
 
@@ -70,12 +70,12 @@ class ProductoController extends Controller implements ControllerInterface
 
     public function findById($id){
         try {
-            return new ProductoResource(
+            return new CategoryResource(
                 $this->repository->findById($id)
             );
         } catch (\Throwable $th) {
-            return new ProductoResource(
-                array("id_producto" => -1,"msg" => "No existe el registro a buscar")
+            return new CategoryResource(
+                array("idcategory" => -1,"msg" => "No existe el registro a buscar")
 
             );
         }

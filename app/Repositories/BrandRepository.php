@@ -1,10 +1,10 @@
 <?php
 namespace App\Repositories;
 
-use App\Models\Producto;
-use App\Interfaces\ProductoRepositoryInterface;
+use App\Models\Brand;
+use App\Interfaces\BrandRepositoryInterface;
 
-class ProductoRepository extends BaseRepository implements ProductoRepositoryInterface
+class BrandRepository extends BaseRepository implements BrandRepositoryInterface
 {
     /**
      * @var Model
@@ -16,7 +16,7 @@ class ProductoRepository extends BaseRepository implements ProductoRepositoryInt
      *
      * @param Model $model
      */
-    public function __construct(Producto $model)
+    public function __construct(Brand $model)
     {
         $this->model = $model;
     }

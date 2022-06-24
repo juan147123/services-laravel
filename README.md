@@ -16,6 +16,7 @@
 - php artisan make:observer ProductoObserver --model=Producto
 
 ## Generar patron de repositorio
+- solo se ejecuta una vez para inyectar las clases necesarias
 
 - php artisan make:provider RepositoryServiceProvider
 
