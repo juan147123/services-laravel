@@ -27,7 +27,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     }
 
     public function listAllSupplierProduct(){
-        return $this->model->select('*')
+        return $this->model->select('product.*','supplier.idsupplier','supplier.businessname')
         ->join('productsupplier', 'product.idproduct', '=', 'productsupplier.idproduct')
         ->join('supplier', 'productsupplier.idsupplier', '=', 'supplier.idsupplier')
         ->get();  ;
