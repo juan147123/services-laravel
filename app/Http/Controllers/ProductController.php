@@ -51,15 +51,14 @@ class ProductController extends Controller
             $data
         );
     }
-
     public function listAll()
     {
-
-        return new  ProductCollection(
-            $this->repository->all(
-                array('*')
-            )
-        );
+        $data = $this->repository->listAllSupplierProduct();
+        $response = [
+            "data"=>$data,
+            "count"=>$data->count()
+        ];
+        return $response;
     }
 
     public function delete($id, Request $request)

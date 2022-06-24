@@ -25,4 +25,11 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     public function insertSupplierProduct($idsupplier,$idproduct){
         return DB::table('productsupplier')->insert(['idsupplier'=>$idsupplier,'idproduct'=>$idproduct]);
     }
+
+    public function listAllSupplierProduct(){
+        return $this->model->select('*')
+        ->join('productsupplier', 'product.idproduct', '=', 'productsupplier.idproduct')
+        ->join('supplier', 'productsupplier.idsupplier', '=', 'supplier.idsupplier')
+        ->get();  ;
+    }
 }
