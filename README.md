@@ -1,5 +1,12 @@
 ## prueba apis laravel
 
+## Crear archivo .env en la raiz del proyecto
+<img src="public/imgreadme/env.png">
+
+## Para conectar con la base de datos Copiar todo el codigo del archivo 
+## .env.example al archivo .env y editar las siguientes lineas
+<img src="public/imgreadme/conection.png">
+
 ## Instalar paquetes[generar carpeta vendor]
 - composer install
 
