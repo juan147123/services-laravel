@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Scopes\EnableScope;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -61,5 +62,10 @@ class Product extends Model
     public function productsuppliers()
     {
         return $this->hasMany('App\Models\Productsupplier', 'idproduct', 'idproduct');
+    }
+    
+    protected static function booted()
+    {
+        static::addGlobalScope(new EnableScope);
     }
 }
